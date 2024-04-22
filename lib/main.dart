@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
   var k;
   @override
   Widget build(BuildContext context) {
-    final ref = fb.ref().child('Notes');
+    final ref = fb.ref().child('todos');
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -190,12 +190,12 @@ class _HomeState extends State<Home> {
   }
 
   upd() async {
-    DatabaseReference ref1 = FirebaseDatabase.instance.ref("Notes/$k");
+    DatabaseReference ref1 = FirebaseDatabase.instance.ref("todos/$k");
 
 // Only update the name, leave the age and address!
     await ref1.update({
-      "content": second.text,
-      "title": third.text,
+      "title": second.text,
+      "subtitle": third.text,
     });
     second.clear();
     third.clear();
